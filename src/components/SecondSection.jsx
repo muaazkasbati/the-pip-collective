@@ -25,7 +25,7 @@ export default function SecondSection() {
     return (
         <section className="py-16 px-4">
             <div className="max-w-7xl mx-auto">
-                <span className="bg-purple-600 text-white px-4 py-2 rounded-full mb-4 hover:bg-purple-700 inline-block">
+                <span className="px-6 py-2.5 rounded-[30px] mb-4 border border-white shadow shadow-white bg-[#A200F5]/10 text-[#A200F5] text-[18px] inline-block">
                     Why Most EAs Fail
                 </span>
                 <h2 className="text-4xl md:text-[40px] text-white mb-8">

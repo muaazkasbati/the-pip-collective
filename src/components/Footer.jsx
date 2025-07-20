@@ -17,7 +17,7 @@ export default function Footer() {
     ]
 
     return (
-        <footer className="py-10">
+        <footer className="py-10 border-t border-white/5">
             <div className="container max-w-7xl mx-auto">
                 <div className="grid grid-cols-12">
                     <div className="col-span-6">

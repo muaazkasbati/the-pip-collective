@@ -37,9 +37,9 @@ export default function ThirdSection() {
     return (
         <section className="py-16 px-4 relative overflow-hidden">
             <div className="max-w-7xl mx-auto text-center shadow-[inset_0_0_10px_#ffffff44] pt-10 pb-12 px-20 rounded-[12px]">
-                <button className="bg-purple-600 text-white px-4 py-2 rounded-full mb-4 hover:bg-purple-700">
+                <span className="px-6 py-2.5 rounded-[30px] mb-4 border border-white shadow shadow-white bg-[#A200F5]/10 text-[#A200F5] text-[18px] inline-block">
                     Why This PipCollector Actually Works
-                </button>
+                </span>
                 <h2 className="text-4xl md:text-[40px] text-white">
                     Built Different-
                 </h2>
@@ -97,9 +97,6 @@ export default function ThirdSection() {
                 </p>
                 <Button link href="#">Ready to Trade Smarter? Unlock It Now</Button>
             </div>
-            <button className="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700">
-                Real Traders. Real Results
-            </button>
         </section>
     );
 }
