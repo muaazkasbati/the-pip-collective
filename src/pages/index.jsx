@@ -9,6 +9,8 @@ import FAQSection from "@/components/FAQSection";
 import Head from "next/head";
 import SubscriptionSection from "@/components/SubscriptionSection";
 import PricingSection from "@/components/PricingSection";
+import CallToActionSection from "@/components/CallToActionSection";
+import ImageBGSection from "@/components/ImageBGSection";
 
 
 export default function Home() {
@@ -24,8 +26,10 @@ export default function Home() {
       <FourthSection />
       <FifthSection />
       <PricingSection />
+      <ImageBGSection />
       <FAQSection />
       <SubscriptionSection />
+      <CallToActionSection />
       <Footer />
     </>
   );

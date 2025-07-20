@@ -22,3 +22,24 @@
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
+
+.testimonial-slider .swiper-wrapper {
+  padding-bottom: 40px;
+}
+
+.testimonial-slider .swiper-horizontal>.swiper-pagination-bullets,
+.testimonial-slider .swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: 0 !important;
+}
+
+.testimonial-slider .swiper-pagination-bullet {
+  width: 47px !important;
+  height: 12px !important;
+  border-radius: 12px !important;
+  background-color: #ffffff7a;
+}
+
+.testimonial-slider .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 68px !important;
+  background-color: #A200F5;
+}
