@@ -161,7 +161,7 @@ export default function FourthSection() {
     return (
         <section
             ref={ref}
-            className="py-16 px-4 max-w-7xl mx-auto text-center"
+            className="py-16 px-4 max-w-6xl mx-auto text-center"
         >
             <motion.span
                 initial={{ opacity: 0, y: 20 }}
@@ -194,28 +194,28 @@ export default function FourthSection() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={visible ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3, duration: 0.6 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative"
             >
-                <div className="flex justify-center">
-                    <img src="/images/mobile-img.png" alt="Mobile Trading Screen" className="w-[90%] max-w-sm md:max-w-full" />
+                <div className="flex justify-center relative z-10">
+                    <img src="/images/mobile-img.png" alt="Mobile Trading Screen" className="w-[80%] max-w-sm md:max-w-full" />
                 </div>
 
-                <div className="md:pl-12 text-center md:text-left">
+                <div className="text-center md:text-left relative z-10">
                     <div className="space-y-6 relative">
                         {[0, 1].map((index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, y: 20 }}
-                                animate={visible ? { opacity: 1, y: 0 } : {}}
+                                animate={visible ? { opacity: 1, y: 0, skewX:-8, } : {}}
                                 transition={{ delay: 0.4 + index * 0.2, duration: 0.6 }}
-                                className="flex flex-col sm:flex-row items-center sm:items-start bg-[#D9D9D9]/10 backdrop-blur-lg p-4 rounded-lg"
+                                className={` flex flex-row items-center sm:items-start bg-[#D9D9D9]/10 backdrop-blur-lg p-4 rounded-lg ${index === 0 ? "ml-8" : ""}`}
                             >
-                                <span className="bg-purple-600 text-white rounded-full w-4 h-4 min-w-4 mr-0 sm:mr-4 mt-0 sm:mt-2 mb-2 sm:mb-0"></span>
+                                <span className="bg-purple-600 shadow-[1px_0_8px_#A200F5] text-white rounded-full w-4 h-4 min-w-4 mr-0 sm:mr-4 mt-4 mb-2 sm:mb-0"></span>
                                 <div>
-                                    <h4 className="text-[24px] md:text-[32px] font-bold">
+                                    <h4 className="text-[24px] md:text-[30px] font-bold">
                                         {index === 0 ? "Smart Entries. Real Edge." : "Verified Results. No Hype."}
                                     </h4>
-                                    <p className="text-[18px] md:text-[24px]">
+                                    <p className="text-[18px] md:text-[22px] font-light">
                                         {index === 0
                                             ? "No Stacking. No Panic. Just Precise Trades Powered By Quant Logic That Adapts in Real-Time."
                                             : "Real Performance. Real Traders. No Chaos. No Gimmicks. Just Consistent Execution And Performance."}
@@ -267,6 +267,7 @@ export default function FourthSection() {
                         <Button>Start Trading Like This</Button>
                     </motion.div>
                 </div>
+                <img src="/images/purple-shadow-bg-104.png" alt="" className="absolute left-0 right-0 -top-18" />
             </motion.div>
         </section>
     );

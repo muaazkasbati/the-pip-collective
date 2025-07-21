@@ -163,29 +163,33 @@ export default function FAQSection() {
         initial={{ opacity: 0, y: 60 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="max-w-7xl mx-auto text-center"
+        className="max-w-7xl mx-auto text-center relative"
       >
-        <div>
-          <Button>Start Trading Smarter Now</Button>
+        <div className="relative z-10">
+          <div>
+            <Button>Start Trading Smarter Now</Button>
+          </div>
+
+          <span className="px-4 py-2 rounded-full mt-8 mb-4 border border-white shadow shadow-white bg-[#A200F5]/10 text-[#A200F5] text-[16px] md:text-[18px] inline-block">
+            FAQs
+          </span>
+
+          <h2 className="text-3xl md:text-[48px] text-white font-semibold mb-4 md:mb-6">
+            Frequently Asked Questions
+          </h2>
+
+          <p className="text-[#898989] font-medium text-[16px] md:text-[20px] mb-8 max-w-3xl mx-auto">
+            Discover how leading businesses optimize performance, automate workflows, and achieve transformative growth with NexAI.
+          </p>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <FAQItem key={faq.id} question={faq.question} answer={faq.answer} index={index} />
+            ))}
+          </div>
         </div>
-
-        <span className="px-4 py-2 rounded-full mt-8 mb-4 border border-white shadow shadow-white bg-[#A200F5]/10 text-[#A200F5] text-[16px] md:text-[18px] inline-block">
-          FAQs
-        </span>
-
-        <h2 className="text-3xl md:text-[48px] text-white font-semibold mb-4 md:mb-6">
-          Frequently Asked Questions
-        </h2>
-
-        <p className="text-[#898989] font-medium text-[16px] md:text-[20px] mb-8 max-w-3xl mx-auto">
-          Discover how leading businesses optimize performance, automate workflows, and achieve transformative growth with NexAI.
-        </p>
-
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <FAQItem key={faq.id} question={faq.question} answer={faq.answer} index={index} />
-          ))}
-        </div>
+        <img src="/images/purple-shadow-bg-101.png" alt="" className='absolute top-42 md:-left-24 left-0' />
+        <img src="/images/purple-shadow-bg-102.png" alt="" className='absolute top-28 md:-right-22 right-0' />
       </motion.div>
     </section>
   );
@@ -200,10 +204,10 @@ function FAQItem({ question, answer, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
-      className={`rounded-xl border border-white/10 relative transition-colors ${isOpen ? "bg-white/5 backdrop-blur-sm" : ""}`}
+      className={`rounded-xl border border-white/10 backdrop-blur-lg relative transition-colors ${isOpen ? "bg-white/5 backdrop-blur-sm" : ""}`}
     >
       <button
-        className={`w-full text-left px-4 md:px-6 pt-4 md:pt-6 ${isOpen ? "pb-2" : "pb-4 md:pb-6"} flex justify-between items-center text-white cursor-pointer`}
+        className={`w-full text-left relative z-10 px-4 md:px-6 pt-4 md:pt-6 ${isOpen ? "pb-2" : "pb-4 md:pb-6"} flex justify-between items-center text-white cursor-pointer`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="text-[18px] md:text-[24px] font-normal">{question}</span>
@@ -235,7 +239,7 @@ function FAQItem({ question, answer, index }) {
               collapsed: { height: 0, opacity: 0 },
             }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="overflow-hidden"
+            className="overflow-hidden relative z-10"
           >
             <p className="px-4 md:px-6 pb-4 md:pb-6 text-[#898989] text-[16px] md:text-[18px] text-left">
               {answer}
@@ -243,6 +247,11 @@ function FAQItem({ question, answer, index }) {
           </motion.div>
         )}
       </AnimatePresence>
+      {isOpen && <>
+        <img src="/images/purple-shadow-bg-102.png" alt="" className='absolute top-0 md:left-16 left-2' />
+        <img src="/images/faq-line-1.png" alt="" className='absolute top-0 md:left-36 left-4' />
+        <img src="/images/faq-line-2.png" alt="" className='absolute bottom-0 md:right-36 right-4' />
+      </>}
     </motion.div>
   );
 }

@@ -25,6 +25,13 @@ const testimonials = [
     text: "AUTO SETFILE FINDER\nWe scan the markets weekly and deliver the top-performing strategies to your dashboard — ready to load and run instantly.",
     image: "/images/testi-img.png",
   },
+  {
+    id: 4,
+    name: "Daniella A-",
+    position: "TPC Member",
+    text: "AUTO SETFILE FINDER\nWe scan the markets weekly and deliver the top-performing strategies to your dashboard — ready to load and run instantly.",
+    image: "/images/testi-img.png",
+  },
 ];
 
 // export default function FifthSection() {
@@ -117,6 +124,11 @@ export default function FifthSection() {
             slidesPerView={1.5}
             centeredSlides={true}
             pagination={{ clickable: true }}
+            breakpoints={{
+              640: { slidesPerView: 1.5 },
+              768: { slidesPerView: 1.5 },
+              1024: { slidesPerView: 2.5 },
+            }}
             className="testimonial-slider"
           >
             {testimonials.map((testimonial, index) => (
