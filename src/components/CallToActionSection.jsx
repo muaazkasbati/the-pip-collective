@@ -5,7 +5,7 @@ import { fadeUp } from './SubscriptionSection';
 
 export default function CallToActionSection() {
   return (
-    <section className="md:pt-12 pt-6 md:pb-0 pb-42">
+    <section id="contact-us" className="md:pt-12 pt-6 md:pb-0 pb-42">
       <div className="relative">
         <motion.div
           variants={fadeUp}

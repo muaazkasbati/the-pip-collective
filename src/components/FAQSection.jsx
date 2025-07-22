@@ -24,132 +24,6 @@ const faqs = [
   },
 ];
 
-// export default function FAQSection() {
-//   return (
-//     <section className="py-16 px-4">
-//       <div className="max-w-7xl mx-auto text-center">
-//         <div>
-//           <Button>Start Trading Smarter Now</Button>
-//         </div>
-//         <span className="px-6 py-2.5 rounded-[30px] mb-4 mt-8 border border-white shadow shadow-white bg-[#A200F5]/10 text-[#A200F5] text-[18px] inline-block">
-//           FAQs
-//         </span>
-//         <h2 className="text-4xl md:text-[48px] text-white mb-6">
-//           Frequently Asked Question
-//         </h2>
-//         <p className="text-[#898989] font-medium text-[20px] mb-8 max-w-3xl mx-auto">
-//           Discover how leading businesses optimize performance, automate workflows, and achieve transformative growth with NexAI.
-//         </p>
-//         <div className="space-y-4">
-//           {faqs.map((faq) => (
-//             <FAQItem key={faq.id} question={faq.question} answer={faq.answer} />
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-// function FAQItem({ question, answer }) {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   return (
-//     <div className={`rounded-xl border border-white/10 relative ${isOpen ? "bg-white/2 backdrop-blur-lg" : ""}`}>
-//       <button
-//         className={`w-full text-left px-6 pt-6 ${isOpen ? "pb-2" : "pb-6"} flex justify-between items-center text-white cursor-pointer`}
-//         onClick={() => setIsOpen(!isOpen)}
-//       >
-//         <span className="text-[24px] font-normal">{question}</span>
-//         <span className="w-10 h-10 rounded-full border border-white/10 text-[15px] flex justify-center items-center" style={{ lineHeight: 0 }}>{isOpen ? <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-//           <path d="M6 12.3208H18" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-//         </svg>
-//           : <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-//             <path d="M6 12.3208H18" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-//             <path d="M12 18.3208V6.3208" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-//           </svg>
-//         }</span>
-//       </button>
-//       <div
-//         className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
-//           }`}
-//       >
-//         <p className="px-6 pb-6 text-[#898989] text-[18px] text-left">{answer}</p>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-// export default function FAQSection() {
-//   return (
-//     <section className="py-12 px-4 md:py-16">
-//       <div className="max-w-7xl mx-auto text-center">
-//         <div>
-//           <Button>Start Trading Smarter Now</Button>
-//         </div>
-
-//         <span className="px-4 py-2 rounded-full mt-8 mb-4 border border-white shadow shadow-white bg-[#A200F5]/10 text-[#A200F5] text-[16px] md:text-[18px] inline-block">
-//           FAQs
-//         </span>
-
-//         <h2 className="text-3xl md:text-[48px] text-white font-semibold mb-4 md:mb-6">
-//           Frequently Asked Questions
-//         </h2>
-
-//         <p className="text-[#898989] font-medium text-[16px] md:text-[20px] mb-8 max-w-3xl mx-auto">
-//           Discover how leading businesses optimize performance, automate workflows, and achieve transformative growth with NexAI.
-//         </p>
-
-//         <div className="space-y-4">
-//           {faqs.map((faq) => (
-//             <FAQItem key={faq.id} question={faq.question} answer={faq.answer} />
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-// function FAQItem({ question, answer }) {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   return (
-//     <div
-//       className={`rounded-xl border border-white/10 relative transition-colors ${isOpen ? "bg-white/5 backdrop-blur-sm" : ""}`}
-//     >
-//       <button
-//         className={`w-full text-left px-4 md:px-6 pt-4 md:pt-6 ${isOpen ? "pb-2" : "pb-4 md:pb-6"} flex justify-between items-center text-white cursor-pointer`}
-//         onClick={() => setIsOpen(!isOpen)}
-//       >
-//         <span className="text-[18px] md:text-[24px] font-normal">{question}</span>
-//         <span
-//           className="w-9 h-9 md:w-10 md:h-10 rounded-full border border-white/10 text-[15px] flex justify-center items-center"
-//           style={{ lineHeight: 0 }}
-//         >
-//           {isOpen ? (
-//             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-//               <path d="M6 12.3208H18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-//             </svg>
-//           ) : (
-//             <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-//               <path d="M6 12.3208H18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-//               <path d="M12 18.3208V6.3208" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-//             </svg>
-//           )}
-//         </span>
-//       </button>
-//       <div
-//         className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
-//       >
-//         <p className="px-4 md:px-6 pb-4 md:pb-6 text-[#898989] text-[16px] md:text-[18px] text-left">
-//           {answer}
-//         </p>
-//       </div>
-//     </div>
-//   );
-// }
-
-
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -158,7 +32,7 @@ export default function FAQSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
   return (
-    <section className="py-12 px-4 md:py-16" ref={ref}>
+    <section id='faqs' className="py-12 px-4 md:py-16" ref={ref}>
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
