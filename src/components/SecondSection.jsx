@@ -25,43 +25,32 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 export default function SecondSection() {
-    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+    const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
-    const containerVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                staggerChildren: 0.2,
-                duration: 0.6,
-                ease: 'easeOut',
-            },
-        },
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-    };
 
     return (
-        <section id="why-us" className="py-16 px-4" ref={ref}>
+        <section id="why-us" className="py-16 px-4" >
             <motion.div
+                ref={ref}
                 className="max-w-7xl mx-auto"
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                variants={containerVariants}
+                initial={{ opacity: 0, y: 40 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.8 }}
             >
+
                 <motion.span
-                    variants={itemVariants}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                     className="px-4 py-2 rounded-[30px] mb-4 border border-white shadow shadow-white bg-[#A200F5]/10 text-[#A200F5] text-[16px] sm:text-[18px] inline-block"
                 >
                     Why Most EAs Fail
                 </motion.span>
 
                 <motion.h2
-                    variants={itemVariants}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.3 }}
                     className="text-2xl sm:text-3xl md:text-[40px] text-white mb-8 leading-tight"
                 >
                     Most EAs Blow Accounts.
@@ -69,16 +58,19 @@ export default function SecondSection() {
                     <span className="font-bold bg-gradient-to-r [background-image:linear-gradient(to_right,_white_30%,_#A200F5_80%)] bg-clip-text text-transparent">Here’s Why</span>
                 </motion.h2>
 
-                <div className="relative">
+                <motion.div className="relative">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 z-0">
                         {strategies.map((item, idx) => (
                             <motion.div
                                 key={idx}
+                                // variants={itemVariants}
+                                initial={{ opacity: 0, y: -40 }}
+                                animate={inView ? { opacity: 1, y: 0 } : {}}
+                                transition={{ duration: 0.5, delay: 0.6 + idx * 0.2 }}
                                 className={`bg-[#3C3C3C] py-6 rounded-lg opacity-80 ${idx % 2 === 0
                                     ? "px-4 sm:px-8 md:pr-6 md:pl-16"
                                     : "px-4 sm:px-8 md:pr-16 md:pl-6"
-                                    } hover:scale-[1.015] hover:shadow-lg transition duration-300 ease-in-out`}
-                                variants={itemVariants}
+                                    }`}
                             >
                                 <div className="flex items-start gap-4">
                                     <div className="w-12 h-12 sm:w-16 sm:h-16 shrink-0">
@@ -128,7 +120,7 @@ export default function SecondSection() {
                     {/* Gradient edges */}
                     <div className="hidden md:block h-full w-[120px] absolute left-0 top-0 bg-gradient-to-r from-[#121212] to-transparent z-10"></div>
                     <div className="hidden md:block h-full w-[120px] absolute right-0 top-0 bg-gradient-to-l from-[#121212] to-transparent z-10"></div>
-                </div>
+                </motion.div>
             </motion.div>
         </section>
     );

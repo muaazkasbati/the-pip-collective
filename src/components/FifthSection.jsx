@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -71,7 +71,7 @@ export default function FifthSection() {
           className="relative"
         >
           <Swiper
-            modules={[Pagination]}
+            modules={[Pagination, Autoplay]}
             spaceBetween={30}
             slidesPerView={1.5}
             centeredSlides={true}
@@ -80,6 +80,12 @@ export default function FifthSection() {
               640: { slidesPerView: 1.5 },
               768: { slidesPerView: 1.5 },
               1024: { slidesPerView: 2.5 },
+            }}
+            loop={true}
+            speed={6000} // long duration for smoothness
+            autoplay={{
+              delay: 0, // very small delay
+              disableOnInteraction: false,
             }}
             className="testimonial-slider"
           >

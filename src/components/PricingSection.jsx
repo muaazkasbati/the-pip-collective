@@ -121,7 +121,7 @@ export default function PricingSection() {
         <span className="px-6 py-2.5 rounded-[30px] mb-4 border border-white shadow shadow-white bg-[#A200F5]/10 text-[#A200F5] text-[18px] inline-block">
           Join Us ThePipCollective
         </span>
-        <h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-white via-white to-[#A200F5] bg-clip-text text-transparent mb-4">
+        <h2 className="text-3xl md:text-5xl leading-16 font-bold bg-gradient-to-r from-white via-white to-[#A200F5] bg-clip-text text-transparent mb-4">
           Select A Plan. Start Trading Smarter.
         </h2>
         <p className="text-lg md:text-2xl text-[#767676] mb-8 max-w-4xl mx-auto">
@@ -177,13 +177,15 @@ export default function PricingSection() {
                 className="pb-12"
               >
                 {plansPaid.map((plan, index) => (
-                  <SwiperSlide key={index}>
+                  <SwiperSlide key={index} className="pt-12">
                     <motion.div
                       variants={fadeUp}
                       initial="hidden"
                       animate={inView ? "visible" : "hidden"}
-                      transition={{ delay: 0.2 + index * 0.2 }}
-                      className="bg-white/10 py-8 px-6 sm:px-10 rounded-3xl text-left relative overflow-hidden before:absolute before:inset-0 before:bg-[url('/images/noise.jpg')] before:bg-cover before:opacity-10 z-0"
+                      // transition={{ delay: 0.2 + index * 0.2 }}
+                      whileHover={{ scale: 1.03 }} // smooth scale on hover
+                      transition={{ delay: 0.1 + index * 0.1, type: "spring", stiffness: 300 }}
+                      className="bg-white/10 py-8 px-6 sm:px-10 rounded-3xl text-left relative overflow-hidden hover:shadow-[0_0_25px_#A200F5] hover:shadow-purple-500/70 duration-300 before:absolute before:inset-0 before:bg-[url('/images/noise.jpg')] before:bg-cover before:opacity-10 z-0"
                     >
                       <h3 className="text-lg font-semibold text-white mb-2 relative z-10">
                         Get INSTANT Access
