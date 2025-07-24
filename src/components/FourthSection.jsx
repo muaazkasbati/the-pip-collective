@@ -230,7 +230,7 @@ export default function FourthSection() {
     <section
       ref={ref}
       id="expectations"
-      className="py-16 px-4 max-w-6xl mx-auto text-center"
+      className="py-16 px-4 max-w-6xl mx-auto text-center md:overflow-visible overflow-hidden"
     >
       <motion.span
         variants={fadeInUp}
