@@ -145,7 +145,7 @@ export default function PricingSection() {
             />
             <div
               className={`
-          absolute text-start left-8 top-0 z-10 md:w-xl w-xs bg-[#656565] 
+          absolute text-start left-8 top-0 z-10 md:w-xl w-[280px] bg-[#656565] 
           backdrop-blur-md rounded-lg shadow-md overflow-hidden 
           before:absolute before:inset-0 before:bg-[url('/images/noise.jpg')] 
           before:bg-cover before:opacity-10 p-6 transition-opacity duration-200
