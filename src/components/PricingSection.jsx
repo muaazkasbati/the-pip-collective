@@ -145,7 +145,7 @@ export default function PricingSection() {
             />
             <div
               className={`
-          absolute text-start left-8 top-0 z-10 md:w-xl w-full bg-[#656565] 
+          absolute text-start left-8 top-0 z-10 md:w-xl w-xs bg-[#656565] 
           backdrop-blur-md rounded-lg shadow-md overflow-hidden 
           before:absolute before:inset-0 before:bg-[url('/images/noise.jpg')] 
           before:bg-cover before:opacity-10 p-6 transition-opacity duration-200
@@ -153,7 +153,7 @@ export default function PricingSection() {
           ${isOpen ? "opacity-100" : "opacity-0"}
         `}
             >
-              <h4 className="text-[32px] font-bold uppercase text-white">What is a setfile?</h4>
+              <h4 className="md:text-[32px] text-[24px] font-bold uppercase text-white">What is a setfile?</h4>
               <p className="text-[18px] text-white">
                 Setfiles are strategy blueprints that tell the EA how to trade.
                 Our Setfile Finder filters and matches setfiles based on your preferred drawdown level and account size — removing the need for manual testing or guesswork.

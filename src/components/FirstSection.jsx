@@ -63,7 +63,7 @@ export default function FirstSection() {
               & Earn $200 just for joining us!
             </motion.p>
           </div>
-          <div className="w-[300px] z-0 overflow-hidden md:hidden block w-full">
+          <div className="h-[300px] z-0 overflow-hidden md:hidden block w-full">
             <video
               src="/images/world-map.mp4"
               autoPlay
