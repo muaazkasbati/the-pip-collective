@@ -81,7 +81,7 @@ export default function FirstSection() {
           transition={{ delay: 1, duration: 1 }}
           className="absolute top-1/3 right-0"
         /> */}
-        <div className="absolute top-0 right-0 inline-block w-full z-0 overflow-hidden pointer-events-none h-[600px]">
+        <div className="absolute top-0 right-0 w-full z-0 overflow-hidden pointer-events-none h-[600px] md:block hidden">
           <video
             src="/images/world-map.mp4"
             autoPlay
@@ -127,6 +127,17 @@ export default function FirstSection() {
             alt=""
             className="w-full h-[150%] sm:h-[200%] object-cover absolute bottom-0"
           />
+        </div>
+        <div className="w-full z-0 overflow-hidden md:hidden block">
+          <video
+            src="/images/world-map.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-auto h-full mix-blend-screen block"
+          />
+          {/* <div className="absolute top-0 left-0 w-full h-full bg-black/30 backdrop-blur-sm" /> */}
         </div>
       </section>
     </>

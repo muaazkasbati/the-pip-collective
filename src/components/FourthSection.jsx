@@ -1,7 +1,7 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Button from "./elements/Button";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function FourthSection() {
   const [ref, inView] = useInView({ threshold: 0.2 });
@@ -16,10 +16,10 @@ export default function FourthSection() {
     visible: { opacity: 1, x: 0 },
   };
 
-  const circleAnimation = {
-    hidden: { strokeDashoffset: 100 },
-    visible: { strokeDashoffset: 25 },
-  };
+  // const circleAnimation = {
+  //   hidden: { strokeDashoffset: 100 },
+  //   visible: { strokeDashoffset: 25 },
+  // };
 
   const containerVariants = {
     visible: {
@@ -27,13 +27,41 @@ export default function FourthSection() {
     },
   };
 
+  // const [percentage, setPercentage] = useState(0);
+  // const { ref: circleRef, inView: circleInView } = useInView({
+  //   triggerOnce: true,
+  //   threshold: 0.3,
+  // });
+  // useEffect(() => {
+  //   if (!circleInView) return;
+
+  //   let current = 0;
+  //   const target = 75;
+  //   const interval = setInterval(() => {
+  //     current += 1;
+  //     if (current > target) {
+  //       clearInterval(interval);
+  //     } else {
+  //       setPercentage(current);
+  //     }
+  //   }, 15); // adjust for speed
+
+  //   return () => clearInterval(interval);
+  // }, [circleInView]);
+
   const [percentage, setPercentage] = useState(0);
+  const controls = useAnimation();
   const { ref: circleRef, inView: circleInView } = useInView({
     triggerOnce: true,
     threshold: 0.3,
   });
+  const animationStarted = useRef(false);
+
   useEffect(() => {
-    if (!circleInView) return;
+    if (!circleInView || animationStarted.current) return;
+
+    animationStarted.current = true;
+    controls.start("visible");
 
     let current = 0;
     const target = 75;
@@ -44,10 +72,15 @@ export default function FourthSection() {
       } else {
         setPercentage(current);
       }
-    }, 15); // adjust for speed
+    }, 15);
 
     return () => clearInterval(interval);
-  }, [circleInView]);
+  }, [circleInView, controls]);
+
+  const circleAnimation = {
+    hidden: { strokeDashoffset: 100 },
+    visible: { strokeDashoffset: 25 },
+  };
 
   return (
     <section
@@ -159,7 +192,7 @@ export default function FourthSection() {
             </h4>
 
             <div className="flex justify-center md:justify-start">
-              <div ref={circleRef} className="relative w-24 h-24 md:w-32 md:h-32">
+              {/* <div ref={circleRef} className="relative w-24 h-24 md:w-32 md:h-32">
                 <svg className="w-full h-full" viewBox="0 0 36 36">
                   <motion.circle
                     cx="18"
@@ -176,15 +209,6 @@ export default function FourthSection() {
                     transition={{ duration: 1.2, ease: "easeInOut" }}
                     transform="rotate(-90 18 18)"
                   />
-                  {/* <text
-                    x="18"
-                    y="21"
-                    textAnchor="middle"
-                    fill="white"
-                    fontSize="8"
-                  >
-                    75%
-                  </text> */}
                   <text
                     x="18"
                     y="21"
@@ -195,6 +219,34 @@ export default function FourthSection() {
                     {percentage}%
                   </text>
 
+                </svg>
+              </div> */}
+              <div ref={circleRef} className="relative w-24 h-24 md:w-32 md:h-32">
+                <svg className="w-full h-full" viewBox="0 0 36 36">
+                  <motion.circle
+                    cx="18"
+                    cy="18"
+                    r="16"
+                    fill="none"
+                    stroke="#A855F7"
+                    strokeWidth="4"
+                    strokeDasharray="100"
+                    strokeDashoffset="100"
+                    variants={circleAnimation}
+                    initial="hidden"
+                    animate={controls}
+                    transition={{ duration: 1.2, ease: "easeInOut" }}
+                    transform="rotate(-90 18 18)"
+                  />
+                  <text
+                    x="18"
+                    y="21"
+                    textAnchor="middle"
+                    fill="white"
+                    fontSize="8"
+                  >
+                    {percentage}%
+                  </text>
                 </svg>
               </div>
             </div>
