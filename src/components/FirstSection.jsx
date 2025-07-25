@@ -1,10 +1,29 @@
+import { useRef } from 'react';
 import Button from './elements/Button';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue } from 'framer-motion';
 
 export default function FirstSection() {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  // Animate the intensity of drop-shadow
+  const shadowStrength = useTransform(scrollYProgress, [0, 1], [0, 20]);
+  const shadowFilter = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ['drop-shadow(0 -30px 10px #A200F5)', 'drop-shadow(0 -60px 20px #A200F5)']
+  );
+
+
+
+
+  const opacity = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
   return (
     <>
-      <section className="pt-16 relative overflow-hidden">
+      <section ref={sectionRef} className="pt-16 relative overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,17 +82,14 @@ export default function FirstSection() {
               & Earn $200 just for joining us!
             </motion.p>
           </div>
-          <div className="h-[300px] z-0 overflow-hidden md:hidden block w-full">
-            <video
-              src="/images/world-map.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full mix-blend-screen block"
-            />
-            {/* <div className="absolute top-0 left-0 w-full h-full bg-black/30 backdrop-blur-sm" /> */}
-          </div>
+          <motion.img
+            src="/images/globe.gif"
+            alt=""
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="h-[300px] md:hidden block mx-auto"
+          />
         </motion.div>
 
         <motion.img
@@ -84,25 +100,14 @@ export default function FirstSection() {
           transition={{ delay: 1, duration: 1 }}
           className="absolute top-1/3 left-0"
         />
-        {/* <motion.img
-          src="/images/world-map.png"
+        <motion.img
+          src="/images/globe.gif"
           alt=""
           initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 0.5, x: 0 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1, duration: 1 }}
-          className="absolute top-1/3 right-0"
-        /> */}
-        <div className="absolute top-0 right-0 w-full z-0 overflow-hidden pointer-events-none h-[600px] md:block hidden">
-          <video
-            src="/images/world-map.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-auto h-full ml-auto md:-mr-[25%] -mr-[45%] mix-blend-screen block"
-          />
-          {/* <div className="absolute top-0 left-0 w-full h-full bg-black/30 backdrop-blur-sm" /> */}
-        </div>
+          className="absolute top-1/5 -right-36 h-[500px] md:block hidden"
+        />
         <div className="relative py-12 mt-16 sm:mt-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -132,12 +137,111 @@ export default function FirstSection() {
               <Button gradient>Before You Blow Another Account... WATCH THIS!</Button>
             </motion.div>
           </motion.div>
-
-          <img
-            src="/images/shadow-img.png"
-            alt=""
+          <motion.svg
+            style={{
+              filter: shadowFilter,
+              opacity,
+            }}
             className="w-full h-[150%] sm:h-[200%] object-cover absolute bottom-0"
-          />
+            viewBox="0 0 1440 352"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_3754_9003)">
+              <g filter="url(#filter0_d_3754_9003)">
+                <ellipse cx="947.161" cy="346.67" rx="469.024" ry="145.592" transform="rotate(3.98847 947.161 346.67)" fill="#121212" />
+              </g>
+              <g filter="url(#filter1_d_3754_9003)">
+                <ellipse cx="719.525" cy="510.757" rx="828.498" ry="347.618" fill="#121212" />
+              </g>
+              <g filter="url(#filter2_d_3754_9003)">
+                <ellipse cx="719.525" cy="510.757" rx="828.498" ry="347.618" fill="#121212" />
+              </g>
+            </g>
+            <defs>
+              <filter id="filter0_d_3754_9003" x="388.108" y="91.5498" width="1118.11" height="479.889" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="-15.1757" />
+                <feGaussianBlur stdDeviation="45.5271" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3754_9003" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3754_9003" result="shape" />
+              </filter>
+              <filter id="filter1_d_3754_9003" x="-346.093" y="-39.8362" width="2131.24" height="1169.48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="34.1453" />
+                <feGaussianBlur stdDeviation="118.56" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.635294 0 0 0 0 0 0 0 0 0 0.960784 0 0 0 1 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3754_9003" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3754_9003" result="shape" />
+              </filter>
+              <filter id="filter2_d_3754_9003" x="-122.726" y="152.231" width="1684.5" height="722.742" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="2.84544" />
+                <feGaussianBlur stdDeviation="6.87649" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3754_9003" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3754_9003" result="shape" />
+              </filter>
+              <clipPath id="clip0_3754_9003">
+                <rect width="1440" height="352" fill="white" />
+              </clipPath>
+            </defs>
+          </motion.svg>
+          {/* <svg className="w-full h-[150%] sm:h-[200%] object-cover absolute bottom-0" viewBox="0 0 1440 352" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_3754_9003)">
+              <g filter="url(#filter0_d_3754_9003)">
+                <ellipse cx="947.161" cy="346.67" rx="469.024" ry="145.592" transform="rotate(3.98847 947.161 346.67)" fill="#121212" />
+              </g>
+              <g filter="url(#filter1_d_3754_9003)">
+                <ellipse cx="719.525" cy="510.757" rx="828.498" ry="347.618" fill="#121212" />
+              </g>
+              <g filter="url(#filter2_d_3754_9003)">
+                <ellipse cx="719.525" cy="510.757" rx="828.498" ry="347.618" fill="#121212" />
+              </g>
+            </g>
+            <defs>
+              <filter id="filter0_d_3754_9003" x="388.108" y="91.5498" width="1118.11" height="479.889" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="-15.1757" />
+                <feGaussianBlur stdDeviation="45.5271" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3754_9003" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3754_9003" result="shape" />
+              </filter>
+              <filter id="filter1_d_3754_9003" x="-346.093" y="-39.8362" width="2131.24" height="1169.48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="34.1453" />
+                <feGaussianBlur stdDeviation="118.56" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.635294 0 0 0 0 0 0 0 0 0 0.960784 0 0 0 1 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3754_9003" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3754_9003" result="shape" />
+              </filter>
+              <filter id="filter2_d_3754_9003" x="-122.726" y="152.231" width="1684.5" height="722.742" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="2.84544" />
+                <feGaussianBlur stdDeviation="6.87649" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_3754_9003" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_3754_9003" result="shape" />
+              </filter>
+              <clipPath id="clip0_3754_9003">
+                <rect width="1440" height="352" fill="white" />
+              </clipPath>
+            </defs>
+          </svg> */}
         </div>
       </section>
     </>
