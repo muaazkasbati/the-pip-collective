@@ -109,6 +109,10 @@ export default function PricingSection() {
     },
   ];
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleTooltip = () => setIsOpen(prev => !prev);
+
   return (
     <section id="pricing" className="py-16 px-4">
       <motion.div
@@ -125,11 +129,35 @@ export default function PricingSection() {
           Select A Plan. Start Trading Smarter.
         </h2>
         <div className="flex items-start gap-0 max-w-4xl mx-auto">
-          <div className="relative group mt-1">
+          {/* <div className="relative group mt-1">
             <img src="/images/info-icon.png" alt="" className="cursor-pointer w-[30px] h-[30px] min-w-[30px]" />
             <div className="absolute text-start left-8 top-0 z-10 md:w-xl w-full bg-[#656565] backdrop-blur-md rounded-lg shadow-md overflow-hidden before:absolute before:inset-0 before:bg-[url('/images/noise.jpg')] before:bg-cover before:opacity-10 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
               <h4 className="text-[32px] font-bold uppercase text-white">What is a setfile?</h4>
               <p className="text-[18px] text-white">Setfiles are strategy blueprints that tell the EA how to trade. Our Setfile Finder filters and matches setfiles based on your preferred drawdown level and account size - removing the need for manual testing or guesswork.</p>
+            </div>
+          </div> */}
+          <div className="relative mt-1 group">
+            <img
+              src="/images/info-icon.png"
+              alt=""
+              onClick={toggleTooltip}
+              className="cursor-pointer w-[30px] h-[30px] min-w-[30px]"
+            />
+            <div
+              className={`
+          absolute text-start left-8 top-0 z-10 md:w-xl w-full bg-[#656565] 
+          backdrop-blur-md rounded-lg shadow-md overflow-hidden 
+          before:absolute before:inset-0 before:bg-[url('/images/noise.jpg')] 
+          before:bg-cover before:opacity-10 p-6 transition-opacity duration-200
+          pointer-events-none group-hover:opacity-100 md:pointer-events-none
+          ${isOpen ? "opacity-100" : "opacity-0"}
+        `}
+            >
+              <h4 className="text-[32px] font-bold uppercase text-white">What is a setfile?</h4>
+              <p className="text-[18px] text-white">
+                Setfiles are strategy blueprints that tell the EA how to trade.
+                Our Setfile Finder filters and matches setfiles based on your preferred drawdown level and account size — removing the need for manual testing or guesswork.
+              </p>
             </div>
           </div>
           <p className="text-lg md:text-2xl text-[#767676] mb-8">
@@ -294,7 +322,7 @@ export default function PricingSection() {
             <motion.div
               variants={fadeUp}
               initial="hidden"
-              animate={inView ? "visible" : "hidden"} 
+              animate={inView ? "visible" : "hidden"}
               className="bg-transparent p-6 rounded-2xl border border-[#A200F5] shadow-[3px_0_12px_#A200F5] mt-16">
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
