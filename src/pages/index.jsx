@@ -11,6 +11,8 @@ import SubscriptionSection from "@/components/SubscriptionSection";
 import PricingSection from "@/components/PricingSection";
 import CallToActionSection from "@/components/CallToActionSection";
 import ImageBGSection from "@/components/ImageBGSection";
+import VideoSection from "@/components/VideoSection";
+import LogoSliderSection from "@/components/LogoSliderSection";
 
 
 export default function Home() {
@@ -21,6 +23,8 @@ export default function Home() {
       </Head>
       <Header />
       <FirstSection />
+      <VideoSection />
+      <LogoSliderSection />
       <SecondSection />
       <ThirdSection />
       <FourthSection />

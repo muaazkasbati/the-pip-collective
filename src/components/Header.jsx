@@ -77,7 +77,7 @@ export default function Header() {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center space-x-4 text-[18px]">
           <motion.a
-            href="#login"
+            href="https://thepipcollective.com/login"
             whileHover={{ scale: 1.05 }}
             className="hover:text-[#A200F5] font-semibold"
           >

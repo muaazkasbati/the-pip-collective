@@ -57,7 +57,13 @@ export default function SubscriptionSection() {
           </p>
 
           {/* Form */}
-          <form className="space-y-4">
+          <form className="space-y-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              window.location.href =
+                "https://docs.google.com/spreadsheets/d/1n8baR8zHTmXPXX4EK0ARgAzZMBdeQojAVlppw6wXEAo/edit?usp=sharing";
+            }}
+          >
             <div className='flex items-center gap-2'>
               <label htmlFor="name" className="block text-white text-[16px] mb-1">
                 Name:
